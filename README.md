@@ -1,4 +1,7 @@
 # cpp_job_manager
+Custom built data structures and locking mechanism to optimize the execution of tasks in a multi-threaded environment. Demonstrates the application of advanced concepts like lock-free and wait-free programming used in real-time and safety critical embedded systems.
+
+
 # Design Discussion:  
 
 ## **Version-0** is arranged as follows:
@@ -17,7 +20,7 @@
 
 ## How is Version-1 an improvement?
 - **Version-1** has all the same components as Version-0, except it uses a custom-built **ThreadSafeOrderedList** instead of *std::set* to record the Tasks for processing.
-- ThreadSafeOrderedList uses fine-grained-locking/hand-over-hand-locking to enable exclusive access of indevidual nodes of the list, instead of the entire data-structure.
+- ThreadSafeOrderedList uses fine-grained-locking/hand-over-hand-locking to enable exclusive access of individual nodes of the list, instead of the entire data-structure.
 - This will allow multiple threads to Read and Write data at the same time on the same data-structure by reducing the contention for global data structure lock.
 - Ex. Two Writer-Threads can insert Tasks of different time_point value to different locations of the data-structure.  
 
